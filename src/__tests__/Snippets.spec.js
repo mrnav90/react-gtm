@@ -8,19 +8,9 @@ describe('Snippets', () => {
     args = { id: 'GTM-abc123', dataLayerName: 'dataLayer', events: {} }
     snippets = Snippets.tags(args)
   })
-  
+
   it('should use the `id` for the iframe', () => {
     expect(snippets.iframe).toContain(`id=${args.id}`, 1)
-  })
-  
-  it('should use the `gtm_auth` and `gtm_preview` for the iframe', () => {
-    Object.assign(args, {
-      auth: '6sBOnZx1hqPcO01xPOytLK',
-      preview: 'env-2'
-    })
-    snippets = Snippets.tags(args)
-    expect(snippets.iframe).toContain(`gtm_auth=${args.auth}`, 1)
-    expect(snippets.iframe).toContain(`gtm_preview=${args.preview}`, 1)
   })
 
   it('should use the `dataLayer` for the script', () => {
